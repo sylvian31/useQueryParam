@@ -83,3 +83,14 @@ export default function useQueryParam(key, defaultValue, parser, serializer) {
 
     return [value, onSetValue];
 }
+
+
+const [page, setPage] = useQueryParam("page", defaultPage, pageParser, pageSerializer);
+
+const pageParser = (valueStr) => {
+    return _.toNumber(valueStr) - 1
+}
+
+const pageSerializer = (valueNumber) => {
+    return _.toString(valueNumber + 1)
+}
